@@ -66,7 +66,7 @@ def getHtmlText(url):
         return "请求错误"
         
 #内容
-def getContent(html,keyword = '老比'):
+def getContent(html,keyword):
     res_data={}
     soup = BeautifulSoup(html, 'html.parser')
     title = soup.title.text
