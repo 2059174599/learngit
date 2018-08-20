@@ -3,6 +3,7 @@ import jieba
 import requests
 from multiprocessing import Pool
 from bs4 import BeautifulSoup
+import traceback
 import re
 import random
 import pymysql
@@ -30,7 +31,7 @@ def statistic_top_word(word_list):
         if len(key) == 2: #只对双字词语百科
             word_keys.append(key)
     sums = len(word_keys)
-    return word_keys[:10]
+    return word_keys[:1]
     #print(word_keys)
     
 #关键词 文本
@@ -56,13 +57,14 @@ def getHtmlText(url):
     'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0; BIDUBrowser 2.x)', 
     'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.11 TaoBrowser/3.0 Safari/536.11',
     'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36']
-    headers = random.choice(head_user_agent)
+    headers = {'User-Agent': random.choice(head_user_agent)}
     try:
         r = requests.get(url,headers = headers,timeout=30)
         r.raise_for_status()
         r.encoding = r.apparent_encoding
         return r.text
     except:
+        traceback.print_exc()
         return "请求错误"
         
 #内容
@@ -70,6 +72,7 @@ def getContent(html,keyword):
     res_data={}
     soup = BeautifulSoup(html, 'html.parser')
     title = soup.title.text
+    print(title)
     summary = soup.find('div',class_='para').text
     sum = 1
     while title:
@@ -77,8 +80,8 @@ def getContent(html,keyword):
         res_data['summary'] = summary
         res_data['keyword'] = keyword
     # if res_data:
-        sql = "INSERT INTO baike_word (word,summary,original_title) values('" + str(res_data['title'])+"','"+str(res_data['summary'])+"','"+str(res_data['keyword'])+"')"      
-        db_execute(sql)
+        # sql = "INSERT INTO baike_word (word,summary,original_title) values('" + str(res_data['title'])+"','"+str(res_data['summary'])+"','"+str(res_data['keyword'])+"')"      
+        # db_execute(sql)
     #print(res_data)
     #百科收录
     # if keyword in title:
@@ -111,6 +114,7 @@ def db_execute(sql):
 #主函数
 def main(keyword):
     url = 'http://baike.baidu.com/search/word?word=' + keyword
+    print(url)
     html = getHtmlText(url)
     content = getContent(html,keyword)
     #print(html[:1000])
