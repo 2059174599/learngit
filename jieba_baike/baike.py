@@ -125,8 +125,8 @@ def main(keyword):
 if __name__ =='__main__':
     word_list = cut_word(datapath)
     statistic_top_word(word_list)
-    for keyword in statistic_top_word(word_list):
-        main(keyword)
+    # for keyword in statistic_top_word(word_list):
+        # main(keyword)
     #多进程
-    # pool = Pool()
-    # pool.map(main,[keyword for keyword in statistic_top_word(word_list)])
+    pool = Pool()
+    pool.map(main,[keyword for keyword in statistic_top_word(word_list)])
