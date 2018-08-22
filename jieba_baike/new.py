@@ -20,8 +20,8 @@ class Spider:
         self.s=requests.Session()
         self.s.headers=self.headers_51job
         self.__domain = domain
-        self.timeOut=30
-        self.cookies={}
+        self.timeOut = 30
+        self.cookies = {}
 
 
     def SetLoginDomain(self,domain='gsxt.gov.cn'):
@@ -64,3 +64,4 @@ if __name__ == '__main__':
     spider.set_cookies()
     # content=spider.open_url(url='http://www.gsxt.gov.cn/corp-query-entprise-info-hot-search-list.html?province=100000')
     # print content
+    测试git
