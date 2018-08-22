@@ -64,4 +64,3 @@ if __name__ == '__main__':
     spider.set_cookies()
     # content=spider.open_url(url='http://www.gsxt.gov.cn/corp-query-entprise-info-hot-search-list.html?province=100000')
     # print content
-    git
