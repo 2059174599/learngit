@@ -54,6 +54,7 @@ ROBOTSTXT_OBEY = False
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
 #   'lagou.middlewares.LagouDownloaderMiddleware': 543,
+	'lagou.pipelines.LagouPipeline': 600,
     'lagou.middlewares.RandomUserAgentMiddleware': 542,
 }
 
