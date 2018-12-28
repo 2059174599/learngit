@@ -11,5 +11,7 @@ import scrapy
 class LagouItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    label = scrapy.Field()
+    tag = scrapy.Field()
+    lg_company_url = scrapy.Field()
     company_url = scrapy.Field()
+    company_word = scrapy.Field()
