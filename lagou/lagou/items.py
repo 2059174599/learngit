@@ -15,3 +15,4 @@ class LagouItem(scrapy.Item):
     lg_company_url = scrapy.Field()
     company_url = scrapy.Field()
     company_word = scrapy.Field()
+    img_log = scrapy.Field()

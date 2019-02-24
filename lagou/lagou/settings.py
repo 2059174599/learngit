@@ -14,7 +14,7 @@ BOT_NAME = 'lagou'
 SPIDER_MODULES = ['lagou.spiders']
 NEWSPIDER_MODULE = 'lagou.spiders'
 
-LOG_LEVEL = 'WARNING'
+#LOG_LEVEL = 'WARNING'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'lagou (+http://www.yourdomain.com)'
 
@@ -33,7 +33,7 @@ ROBOTSTXT_OBEY = False
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -53,8 +53,8 @@ ROBOTSTXT_OBEY = False
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-#   'lagou.middlewares.LagouDownloaderMiddleware': 543,
-	'lagou.pipelines.LagouPipeline': 600,
+    #'lagou.middlewares.LagouDownloaderMiddleware': 343,
+	'lagou.pipelines.LagouPipeline': 300,
     'lagou.middlewares.RandomUserAgentMiddleware': 542,
 }
 
